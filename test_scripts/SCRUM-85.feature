@@ -1,11 +1,12 @@
-Feature: Healthcare Provider Website
+Feature: Healthcare Provider Website - User Interface and Navigation
+
+  Background:
+    Given I am on the homepage
 
   @website_navigation
   Scenario: Accessing different sections of the website
-    Given I am on the homepage
     When I look at the header section at the top of the page
-    Then I should see a logo
-    And I should see navigation links for 'Home', 'About', 'Services', and 'Contact'
+    Then I should see a logo and navigation links for 'Home', 'About', 'Services', and 'Contact'
     When I click on the 'Home' link
     Then I should be navigated to the homepage
     When I click on the 'About' link
@@ -17,18 +18,16 @@ Feature: Healthcare Provider Website
 
   @hero_carousel
   Scenario: Viewing promotional content
-    Given I am on the homepage
     When I view the hero section
     Then I should see a slide with the heading 'Compassionate, Patient-Centered Care'
-    And I should see an image associated with the slide
-    When I wait for 5 seconds # Adjust time as needed
-    Then the slide should change to display a new image and heading
+    And I should see a supporting image for 'Compassionate, Patient-Centered Care'
+    When I wait for 5 seconds
+    Then the slide should change to display a new image and content
     When I click the navigation dot
-    Then the slide should change to display a new image and heading
+    Then the slide should change to display a new image and content
 
   @value_proposition
   Scenario: Understanding the core principles of the service
-    Given I am browsing the page
     When I scroll to the 'No Nonsense' section
     Then I should see an image of a doctor with a patient on the left
     And I should see a list of key philosophies like 'Patient-First Philosophy' and 'Quick, Easy Access to Care' on the right
@@ -37,35 +36,28 @@ Feature: Healthcare Provider Website
 
   @service_highlights
   Scenario: Quickly learning about key features
-    Given I am on the homepage
     When I see the section with three columns
-    Then I should see a distinct highlight for 'Innovation & Technology'
-    And I should see a relevant image and description for 'Innovation & Technology'
-    Then I should see a distinct highlight for 'Experienced Medical Team'
-    And I should see a relevant image and description for 'Experienced Medical Team'
-    Then I should see a distinct highlight for 'Multiple Locations'
-    And I should see a relevant image and description for 'Multiple Locations'
+    Then I should see a distinct highlight for 'Innovation & Technology' with a relevant image and description
+    And I should see a distinct highlight for 'Experienced Medical Team' with a relevant image and description
+    And I should see a distinct highlight for 'Multiple Locations' with a relevant image and description
 
   @inspirational_message
   Scenario: Reading a quote on the page
-    Given I am scrolling through the website
-    When I arrive at the section with a large heart graphic
+    When I scroll to the section with a large heart graphic
     Then I should see the quote 'Other people's successes are good news...' displayed prominently
     And I should see its attribution below the quote
 
   @core_values
   Scenario: Exploring company values
-    Given I am on the webpage
     When I scroll to the 'Key Highlights?' section
     Then I should see a grid of four cards
-    Then each card should represent a core value such as 'Compassion is at the Core'
-    And each card should have a placeholder image
-    And each card should have a description
-    And I should see a core value of 'Teamwork Drives Us'
+    And the first card should represent the core value 'Compassion is at the Core' with a placeholder image and a description
+    And the second card should represent a core value such as 'Teamwork Drives Us' with a placeholder image and a description
+    And the third card should represent a core value with a placeholder image and a description
+    And the fourth card should represent a core value with a placeholder image and a description
 
   @company_story
   Scenario: Learning about the company's background
-    Given I am on the website
     When I navigate to the 'Your health. Your voice. Your life.' section
     Then I should see detailed text on the left describing the company's history and mission
     And I should see a supporting graphic with medical icons on the right
@@ -75,7 +67,7 @@ Feature: Healthcare Provider Website
     Given I am at the bottom of any page on the website
     When I view the footer section
     Then I should see three columns of information
-    And I should be able to find the main office address
-    And I should be able to find the phone number
-    And I should be able to find the privacy policy link
-    And I should be able to find the copyright information
+    And I should be able to find the main office address in the footer
+    And I should be able to find the phone number in the footer
+    And I should be able to find a link to the privacy policy in the footer
+    And I should be able to find the copyright information in the footer
